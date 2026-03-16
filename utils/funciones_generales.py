@@ -87,3 +87,19 @@ def init_logger(log_name="app.log", level=logging.INFO):
     return logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------- #
+def OpenObsDataSet(name, sa=True,
+                   dir='/pikachu/datos/luciano.andrian/observado/ncfiles/data_obs_d_w_c/'):
+
+    aux = xr.open_dataset(dir + name + '.nc')
+
+    if sa:
+        aux2 = aux.sel(lon=slice(270, 330), lat=slice(15, -60))
+        if len(aux2.lat) > 0:
+            return aux2
+        else:
+            aux2 = aux.sel(lon=slice(270, 330), lat=slice(-60, 15))
+            return aux2
+    else:
+        return aux
+
+# ---------------------------------------------------------------------------- #

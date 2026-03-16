@@ -45,4 +45,7 @@ comps = comps.assign_coords(case=cases_cfsv2)  # nombres de los cases como coord
 if save:
     logger.info(f'Saving {out_dir}comp_cir_cfsv2.nc')
     comps.to_netcdf(f'{out_dir}comp_cir_cfsv2.nc')
+
+# ---------------------------------------------------------------------------- #
+logger.info(f'Done')
 # ---------------------------------------------------------------------------- #

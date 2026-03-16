@@ -57,4 +57,7 @@ ds_final = xr.concat(results, dim='level')
 if save:
     logger.info(f'Saving {out_dir}comp_cir_obs.nc')
     ds_final.to_netcdf(f'{out_dir}comp_cir_obs.nc')
+
+# ---------------------------------------------------------------------------- #
+logger.info(f'Done')
 # ---------------------------------------------------------------------------- #

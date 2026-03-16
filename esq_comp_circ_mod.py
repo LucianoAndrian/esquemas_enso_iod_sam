@@ -20,7 +20,7 @@ cases_cfsv2 = ['n34_puros_pos', 'n34_puros_neg',
                'dmi_puros_pos', 'dmi_puros_neg',
                'sim_pos', 'sim_neg']
 
-neutro = xr.open_dataset(cases_dir + 'hgt_neutros_SON_05.nc') \
+neutro = xr.open_dataset(f'{cases_dir}hgt_neutros_SON_05.nc') \
     .rename({'hgt': 'var'})
 neutro = Weights(neutro.__mul__(9.80665))
 
@@ -28,7 +28,7 @@ aux_hgt = []
 logger.info('cases')
 for c in cases_cfsv2:
     logger.debug(f'Case {c}')
-    case = xr.open_dataset(cases_dir + 'hgt_' + c + '_SON_05.nc'). \
+    case = xr.open_dataset(f'{cases_dir}hgt_{c}_SON_05.nc'). \
         rename({'hgt': 'var'})
     case = Weights(case.__mul__(9.80665))
     num_case = len(case.time)

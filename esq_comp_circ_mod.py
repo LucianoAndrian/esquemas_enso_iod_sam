@@ -34,8 +34,8 @@ for c in cases_cfsv2:
     num_case = len(case.time)
     comp = case.mean('time') - neutro.mean('time')
 
-    spread = case - comp
-    spread = spread.std('time')
+    # spread = case - comp
+    # spread = spread.std('time')
 
     aux_hgt.append(comp)
 

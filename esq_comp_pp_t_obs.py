@@ -36,12 +36,12 @@ for v in ['prec', 'temp']:
     logger.debug('using Opendataset')
     data = OpenObsDataSet(name=f'{v_name}_SON', sa=True)
     if v == 'prec':
-        lon = data.lon
-        lat = data.lat
+        lon = data.lon.values
+        lat = data.lat.values
 
     if v == 'prec':
-        lon = data.lon
-        lat = data.lat
+        lon = data.lon.values
+        lat = data.lat.values
 
     aux_var = []
     logger.info('cases')
@@ -69,9 +69,10 @@ for v in ['prec', 'temp']:
 
     ds_final = xr.concat(results, dim='level')
 
-    if save:
-        logger.info(f'Saving {out_dir}comp_{v}_obs.nc')
-        ds_final.to_netcdf(f'{out_dir}comp_{v}_obs.nc')
+
+if save:
+    logger.info(f'Saving {out_dir}comp_pp_t_obs.nc')
+    ds_final.to_netcdf(f'{out_dir}comp_pp_t_obs.nc')
 
 # ---------------------------------------------------------------------------- #
 logger.info(f'Done')

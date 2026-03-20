@@ -1,8 +1,8 @@
 """
-Esquema de circulacion ENSO-IOD
+Esquema de circulacion - ENSO-IOD
 """
 # ---------------------------------------------------------------------------- #
-save = True
+save = False
 out_dir = '/home/luciano.andrian/doc/esquemas/salidas_plots/'
 
 data_dir = '/home/luciano.andrian/doc/esquemas/salidas/'
@@ -63,11 +63,12 @@ dmi_hibrid = normalize_field(dmi_hibrid)
 
 plot_esquema_circ_hs(data_shd=sim, levels_shd=[-1, -0.2, 0, 0.2, 1],
                      data_sld_ln=ninio_hibrid, levels_sld_ln=[-0.35, 0.3],
-                     data_dtd_ln=0*dmi_hibrid, levels_dtd_ln=[-0.35, 0.35],
+                     data_dtd_ln=dmi_hibrid, levels_dtd_ln=[-0.35, 0.35],
                      title=f'El Niño (solid lines), Positive IOD (dotted lines), '
                            f'El Niño + positive IOD (shading)',
                      name_fig='esquema_positivo_hs_circ.png', save=save, step=1,
-                     high=2.3)
+                     high=2.3,
+                     color_dtd=['#007E72', '#B2000D'])
 
 # Fase negativa -------------------------------------------------------------- #
 # Simultaneos
@@ -100,8 +101,11 @@ dmi_hibrid = normalize_field(dmi_hibrid)
 
 plot_esquema_circ_hs(data_shd=sim, levels_shd=[-1, -0.2, 0, 0.2, 1],
                      data_sld_ln=ninia_hibrid, levels_sld_ln=[-0.3, 0.3],
-                     data_dtd_ln=0*dmi_hibrid, levels_dtd_ln=[-0.3, 0.3],
+                     data_dtd_ln=dmi_hibrid, levels_dtd_ln=[-0.3, 0.3],
                      title=f'La Niña (solid lines), Negative IOD (dotted lines), '
                            f'La Niña + negative IOD (shading)',
                      name_fig='esquema_negativo_hs_circ.png', save=save, step=1,
-                     high=2.3)
+                     high=2.3,
+                     color_dtd=['#007E72', '#B2000D'])
+
+# ---------------------------------------------------------------------------- #

@@ -46,7 +46,7 @@ for v in ['prec', 'tref']:
             rename({name_var:'var'})
 
         num_case = len(case.time)
-        comp = case.mean('time') - neutro.mean('time')
+        comp = case.mean('time')*fix - neutro.mean('time')
 
         aux_var.append(comp)
 
@@ -56,6 +56,7 @@ for v in ['prec', 'tref']:
     if save:
         logger.info(f'Saving {out_dir}comp_{v}_cfsv2.nc')
         comps.to_netcdf(f'{out_dir}comp_{v}_cfsv2.nc')
+        del comps
 
 # ---------------------------------------------------------------------------- #
 logger.info(f'Done')
